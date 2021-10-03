@@ -1,13 +1,23 @@
 using JuMP
-using Gurobi
 using DelimitedFiles
+using Gurobi
+using MathOptInterface
+using CSV
+using DataFrames
+
+const MOI = MathOptInterface
+
+fileName = []
+agentsNumber = []
+solveTime = []
+isOptimalSolution = []
+solution = []
 
 const GRB_ENV = Gurobi.Env()
 
 # Criando o modelo com o resolvedor Gurobi sem heurística e tempo limite de 30min
 solver = () -> Gurobi.Optimizer(GRB_ENV)
 
-# walkdir("instancias/insta")
 files = readdir("instancias/insta"; join=true)
 
 for f in files
@@ -37,11 +47,25 @@ for f in files
     end
     
     # Trazendo uma solução otima
-    optimize!(model)
-    
-    println("File name -> ",  f)
-    println("Agents -> ",  n)
-    println("Solve time -> ",  solve_time(model))
-    println("\n-----------------------------\n")
-    
+    JuMP.optimize!(model)
+
+    push!(fileName, f)
+    push!(agentsNumber, n)
+    push!(solveTime, solve_time(model))
+    push!(isOptimalSolution, termination_status(model) == MOI.OPTIMAL)
+    push!(solution, objective_value(model))
+
+    println("File name -> ", f)
 end
+
+const dataFrame = DataFrame(
+    file_name = fileName,
+    agents_number = agentsNumber,
+    solve_time = solveTime,
+    is_optimal_solution = isOptimalSolution,
+    solution = solution
+)
+
+CSV.write("gurobi_data_insta.csv", dataFrame)
+
+println(dataFrame)

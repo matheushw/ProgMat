@@ -26,7 +26,7 @@ for f in files
     set_optimizer_attribute(model, "logLevel", 0)
 
     # Lendo a matriz de custo
-    c = readdlm(f, Float)
+    c = readdlm(f, Float64)
 
     # Checando o tamanho das linhas da matriz
     n = size(c)[1]
