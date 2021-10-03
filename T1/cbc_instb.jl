@@ -67,6 +67,6 @@ const dataFrame = DataFrame(
     solution = solution
 )
 
-CSV.write("data_instb.csv", dataFrame)
+CSV.write("cbc_data_instb.csv", dataFrame)
 
 println(dataFrame)
