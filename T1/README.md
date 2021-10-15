@@ -33,6 +33,12 @@ Aqui temos notebooks de:
 
 
 ### Passo a passo para execução
+
+#### 0º passo
+Possuir todas as instâncias na raiz do diretório organizadas da maneira:
+- instancias/insta
+- instancias/instb
+
 #### 1º passo
 O primeiro passo seria executar a celula contida no arquivo "0 - Setup.ipynb" para poder instalar todos os pacotes usados durante a implementação dos algoritmos.
 
@@ -46,4 +52,3 @@ Como resultado das execuções, nós guardamos as seguintes informações conven
  - solve_time (Tempo decorrido para o solver resolver a instância)
  - is_optimal_solution (É uma solução ótima) (Não disponível para o solver hungáro)
  - solution (Melhor solução encontrada)
- 
