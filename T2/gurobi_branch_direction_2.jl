@@ -42,7 +42,7 @@ for f in files
     set_optimizer_attribute(model, "TimeLimit", 3 * 60)
     set_optimizer_attribute(model, "Cuts", 0)
     set_optimizer_attribute(model, "Presolve", 0)
-    set_optimizer_attribute(model, "BranchDir", -1)
+    set_optimizer_attribute(model, "BranchDir", 1)
     set_optimizer_attribute(model, "OutputFlag", 1)
 
     inst = open(f)
