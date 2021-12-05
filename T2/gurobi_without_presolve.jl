@@ -40,7 +40,6 @@ for f in files
     # Criando o modelo que usa o Gurobi solver
     model = Model(solver)
     set_optimizer_attribute(model, "TimeLimit", 3 * 60)
-    set_optimizer_attribute(model, "Cuts", 0)
     set_optimizer_attribute(model, "Presolve", 0)
     set_optimizer_attribute(model, "OutputFlag", 1)
 
