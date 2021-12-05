@@ -41,7 +41,7 @@ for f in files
     model = Model(solver)
     set_optimizer_attribute(model, "TimeLimit", 3 * 60)
     set_optimizer_attribute(model, "Cuts", 0)
-    set_optimizer_attribute(model, "CliqueCuts", 1)
+    set_optimizer_attribute(model, "ZeroHalfCuts", 2)
     set_optimizer_attribute(model, "GomoryPasses", typemax(Int32))
     set_optimizer_attribute(model, "Presolve", 0)
     set_optimizer_attribute(model, "OutputFlag", 1)
